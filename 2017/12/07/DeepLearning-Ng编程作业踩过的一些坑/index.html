@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Ma Hao">
 <meta property="og:description" content="1.Course 1  Assignment 3 error 1 问题代码： 12# Visualize the data:plt.scatter(X[0, :], X[1, :], c=Y, s=40, cmap=plt.cm.Spectral); 执行后报错：">
 <meta property="og:image" content="http://yoursite.com/2017/12/07/DeepLearning-Ng编程作业踩过的一些坑/C1W301.png">
-<meta property="og:updated_time" content="2017-12-08T08:17:34.547Z">
+<meta property="og:updated_time" content="2017-12-08T15:08:50.180Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DeepLearning-Ng编程作业踩过的一些坑">
 <meta name="twitter:description" content="1.Course 1  Assignment 3 error 1 问题代码： 12# Visualize the data:plt.scatter(X[0, :], X[1, :], c=Y, s=40, cmap=plt.cm.Spectral); 执行后报错：">
@@ -202,6 +202,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -283,7 +293,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ma Hao">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/a.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -318,6 +328,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/代码/" itemprop="url" rel="index">
+                    <span itemprop="name">代码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -350,7 +382,7 @@
       
 
       
-        <h2 id="course-1">1.Course 1</h2>
+        <h3 id="course-1">1.Course 1</h3>
 <ul>
 <li><h4 id="assignment-3-error-1">Assignment 3 error 1</h4>
 <p>问题代码：</p>
@@ -372,7 +404,7 @@
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Z1 = np.dot(W1,X)+b1</span><br><span class="line">A1 = np.tanh(Z1)</span><br><span class="line">Z2 = np.dot(W2,A1)+b2</span><br><span class="line">A2 = sigmoid(Z2)</span><br></pre></td></tr></table></figure></p>
 <p>并且注意，如果这里得不到一致的结果，直接会影响最后的<code>nn_model</code>函数，构建不出恰当的模型</p></li>
 </ul>
-<h2 id="course-2">2.Course 2</h2>
+<h3 id="course-2">2.Course 2</h3>
 <ul>
 <li><h4 id="assignment-1-error-1">Assignment 1 error 1</h4>
 <p>可能会在很多地方看到类似这样的报错</p>
@@ -382,12 +414,12 @@
 <p>这是由于提供的代码中，很多地方都是<code>plt.scatter</code>函数的参数 <code>c</code> 出问题，下面不一一列举，简述个人遇到的需要修改的地方： 修改<code>reg_utils.py</code>:</p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 324行</span></span><br><span class="line">plt.scatter(X[<span class="number">0</span>, :], X[<span class="number">1</span>, :], c=np.squeeze(y), cmap=plt.cm.Spectral)</span><br><span class="line"><span class="comment"># 334行</span></span><br><span class="line">plt.scatter(train_X[<span class="number">0</span>, :], train_X[<span class="number">1</span>, :], c=np.squeeze(train_Y), s=<span class="number">40</span>, cmap=plt.cm.Spectral);</span><br></pre></td></tr></table></figure></p></li>
 </ul>
-<h2 id="course-3">3. Course 3</h2>
+<h3 id="course-3">3. Course 3</h3>
 <ul>
 <li><h4 id="test">test</h4></li>
 <li><h4 id="test2">test2</h4></li>
 </ul>
-<h2 id="course-4">4. Course 4</h2>
+<h3 id="course-4">4. Course 4</h3>
 
       
     </div>
@@ -397,6 +429,35 @@
 
     
 
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/weixin.png" alt="Ma Hao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Ma Hao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
@@ -484,10 +545,23 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/a.jpg"
+                alt="Ma Hao" />
             
               <p class="site-author-name" itemprop="name">Ma Hao</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -506,6 +580,15 @@
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
             
 
             
@@ -546,6 +629,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#course-1"><span class="nav-text">1.Course 1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#assignment-3-error-1"><span class="nav-text">Assignment 3 error 1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#assignment-3-error-2"><span class="nav-text">Assignment 3 error 2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#course-2"><span class="nav-text">2.Course 2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#assignment-1-error-1"><span class="nav-text">Assignment 1 error 1</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#course-3"><span class="nav-text">3. Course 3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#test"><span class="nav-text">test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#test2"><span class="nav-text">test2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#course-4"><span class="nav-text">4. Course 4</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

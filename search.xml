@@ -4,6 +4,9 @@
     <title><![CDATA[使用Numpy进行one-hot编码]]></title>
     <url>%2F2017%2F12%2F08%2F%E4%BD%BF%E7%94%A8Numpy%E8%BF%9B%E8%A1%8Cone-hot%E7%BC%96%E7%A0%81%2F</url>
     <content type="text"><![CDATA[在实现很多机器学习任务的时候，经常需要将labels进行one-hot encoding，具体思想这里就不详述，借一张图来表示： 由于最后的每个label向量只有一个维度的值是1，其他都是0，所以实现方法可以借助线性代数中的单位矩阵 [百度百科] [wikipedia] Numpy实现可以是这样： 1234567891011121314# 函数需不需要返回转置要根据具体情况看# 如果不转置每个label返回的就是一个行向量# 这里转置了，每个label就是对应的列向量def convert_to_one_hot(y, C): return np.eye(C)[y.reshape(-1)].T y = np.array([1,2,3,4])convert_to_one_hot(y,5)# array([[ 0., 0., 0., 0.],# [ 1., 0., 0., 0.],# [ 0., 1., 0., 0.],# [ 0., 0., 1., 0.],# [ 0., 0., 0., 1.]])]]></content>
+      <categories>
+        <category>代码</category>
+      </categories>
       <tags>
         <tag>Numpy</tag>
         <tag>Python</tag>
@@ -13,15 +16,21 @@
     <title><![CDATA[Numpy中b=a.reshpe(-1)]]></title>
     <url>%2F2017%2F12%2F08%2Fnumpy%E4%B8%ADb-a-reshpe-1%2F</url>
     <content type="text"><![CDATA[在Python中，-1可以表示最后一个元素，可是Numpy的reshape成-1的形状是什么意思？注意，这里 并不是取最后一个维度！ 并不是取最后一个维度！ 并不是取最后一个维度！ 其实原因很简单，如果是最后一个维度，那得到的这个新数组的长度和之前的对不上。 那 -1 代表什么？我们来看Numpy文档的介绍： newshape : int or tuple of ints The new shape should be compatible with the original shape. If an integer, then the result will be a 1-D array of that length. One shape dimension can be -1. In this case, the value is inferred from the length of the array and remaining dimensions. 介绍得很清楚了，-1 在这里的作用是占一个位，表示这里有一个维度，那么具体是多少回由Numpy计算出来之后再填上去。 来个例子帮助理解： 1234567import Numpy as npa = np.array([ [[[3,2],[3,2]],[3,2],[3,2]],[[[3,2],[3,2]],[3,2],[3,2]],[[[3,2],[3,2]],[3,2],[3,2]] ])print(a.shape)# (3, 3, 2)b = a.reshape(a.shape[0],-1)print(b.shape)# (3, 6)]]></content>
+      <categories>
+        <category>代码</category>
+      </categories>
       <tags>
-        <tag>python</tag>
         <tag>Numpy</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[DeepLearning-Ng编程作业踩过的一些坑]]></title>
     <url>%2F2017%2F12%2F07%2FDeepLearning-Ng%E7%BC%96%E7%A8%8B%E4%BD%9C%E4%B8%9A%E8%B8%A9%E8%BF%87%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91%2F</url>
     <content type="text"><![CDATA[1.Course 1 Assignment 3 error 1 问题代码： 12# Visualize the data:plt.scatter(X[0, :], X[1, :], c=Y, s=40, cmap=plt.cm.Spectral); 执行后报错： ValueError: c of shape (1, 400) not acceptable as a color sequence for x with size 400, y with size 400 需要将上面的代码修改如下： 12# Visualize the data:plt.scatter(X[0, :], X[1, :], c=Y.flatten(), s=40, cmap=plt.cm.Spectral); 然后就可以看到这朵花了 Assignment 3 error 2 问题代码： 1234X_assess, parameters = forward_propagation_test_case()A2, cache = forward_propagation(X_assess, parameters)# Note: we use the mean here just to make sure that your output matches ours. print(np.mean(cache['Z1']) ,np.mean(cache['A1']),np.mean(cache['Z2']),np.mean(cache['A2'])) 执行后报错： ipykernel_launcher.py:20: RuntimeWarning: divide by zero encountered in log ipykernel_launcher.py:20: RuntimeWarning: invalid value encountered in add 检查你的计算前馈网络时候使用的激活函数，将forward_propagation函数的计算A2的代码修改如下： 1234Z1 = np.dot(W1,X)+b1A1 = np.tanh(Z1)Z2 = np.dot(W2,A1)+b2A2 = sigmoid(Z2) 并且注意，如果这里得不到一致的结果，直接会影响最后的nn_model函数，构建不出恰当的模型 2.Course 2 Assignment 1 error 1 可能会在很多地方看到类似这样的报错 ValueError: c of shape (1, 300) not acceptable as a color sequence for x with size 300, y with size 300 这是由于提供的代码中，很多地方都是plt.scatter函数的参数 c 出问题，下面不一一列举，简述个人遇到的需要修改的地方： 修改reg_utils.py: 1234# 324行plt.scatter(X[0, :], X[1, :], c=np.squeeze(y), cmap=plt.cm.Spectral)# 334行plt.scatter(train_X[0, :], train_X[1, :], c=np.squeeze(train_Y), s=40, cmap=plt.cm.Spectral); 3. Course 3 test test2 4. Course 4]]></content>
+      <categories>
+        <category>代码</category>
+      </categories>
       <tags>
         <tag>deep learning</tag>
         <tag>tensorflow</tag>
@@ -31,11 +40,14 @@
   <entry>
     <title><![CDATA[Numpy中sum函数求和结果维度问题]]></title>
     <url>%2F2017%2F12%2F05%2Fnumpy%E4%B8%ADsum%E5%87%BD%E6%95%B0%E6%B1%82%E5%92%8C%E7%BB%93%E6%9E%9C%E7%BB%B4%E5%BA%A6%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[使用Numpy（下面简称np）中的sum函数对某一维度求和时，由于该维度会在求和后变成一个数，所以所得结果的这一维度为空。比如下面的例子： 1234a = np.array([[1,2,3],[4,5,6]])b = np.sum(a,axis=1)print(b.shape)#out: (2,) 所以，对于一个shape为(2,3)的数组，在默认情况下使用np.sum函数求和后得到的结果shape是 (2,)，如果我们想得到的是(2,1)的shape怎么办？比如Ng的深度学习编程练习中Course 1 Assignment 4就要求这样。使用reshape函数当然可以，只是没有必要，太麻烦了一点不优雅。我们可以使用通过设置keepdims参数实现，还是这个例子： 1234a = np.array([[1,2,3],[4,5,6]])b = np.sum(a,axis=1,keepdims=True)print(b.shape)#out: (2,1) (2,1)和(2,)的shape之间不同参见 What's the difference between (N,) and (N,1) in Numpy? ---Stackoverflow 这里有个小例子可以帮助理解： 1234567891011a = np.ones((5,))b = np.ones((5,1))print(a)# [1. 1. 1. 1. 1.]print(b)# [[1.]# [1.]# [1.]# [1.]# [1.]]]]></content>
+    <content type="text"><![CDATA[使用Numpy（下面简称np）中的sum函数对某一维度求和时，由于该维度会在求和后变成一个数，所以所得结果的这一维度为空。比如下面的例子： 1234a = np.array([[1,2,3],[4,5,6]])b = np.sum(a,axis=1)print(b.shape)# (2,) 所以，对于一个shape为(2,3)的数组，在默认情况下使用np.sum函数求和后得到的结果shape是 (2,)，如果我们想得到的是(2,1)的shape怎么办？比如Ng的深度学习编程练习中Course 1 Assignment 4就要求这样。使用reshape函数当然可以，只是没有必要，太麻烦了一点不优雅。我们可以使用通过设置keepdims参数实现，还是这个例子： 1234a = np.array([[1,2,3],[4,5,6]])b = np.sum(a,axis=1,keepdims=True)print(b.shape)# (2,1) (2,1)和(2,)的shape之间不同参见 What's the difference between (N,) and (N,1) in Numpy? ---Stackoverflow 这里有个小例子可以帮助理解： 1234567891011a = np.ones((5,))b = np.ones((5,1))print(a)# [1. 1. 1. 1. 1.]print(b)# [[1.]# [1.]# [1.]# [1.]# [1.]]]]></content>
+      <categories>
+        <category>代码</category>
+      </categories>
       <tags>
         <tag>tensorflow</tag>
-        <tag>python</tag>
         <tag>Numpy</tag>
+        <tag>python</tag>
       </tags>
   </entry>
 </search>

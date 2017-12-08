@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Numpy,python," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,17 +79,13 @@
 
 
 
-<meta name="description" content="在Python中，-1可以表示最后一个元素，可是Numpy的reshape成-1的形状是什么意思？注意，这里">
-<meta name="keywords" content="Numpy,python">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Numpy中b=a.reshpe(-1)">
-<meta property="og:url" content="http://yoursite.com/2017/12/08/numpy中b-a-reshpe-1/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="分类">
+<meta property="og:url" content="http://yoursite.com/categories/index.html">
 <meta property="og:site_name" content="Ma Hao">
-<meta property="og:description" content="在Python中，-1可以表示最后一个元素，可是Numpy的reshape成-1的形状是什么意思？注意，这里">
-<meta property="og:updated_time" content="2017-12-08T15:08:29.662Z">
+<meta property="og:updated_time" content="2017-12-08T15:05:06.794Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Numpy中b=a.reshpe(-1)">
-<meta name="twitter:description" content="在Python中，-1可以表示最后一个元素，可是Numpy的reshape成-1的形状是什么意思？注意，这里">
+<meta name="twitter:title" content="分类">
 
 
 
@@ -119,13 +115,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/08/numpy中b-a-reshpe-1/"/>
+  <link rel="canonical" href="http://yoursite.com/categories/"/>
 
 
 
 
 
-  <title>Numpy中b=a.reshpe(-1) | Ma Hao</title>
+  <title>分类 | Ma Hao</title>
   
 
 
@@ -274,219 +270,40 @@
 
   <div id="posts" class="posts-expand">
     
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/08/numpy中b-a-reshpe-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ma Hao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/a.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ma Hao">
-    </span>
-
     
+    
+    <div class="post-block page">
       <header class="post-header">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">Numpy中b=a.reshpe(-1)</h1>
-        
+	<h1 class="post-title" itemprop="name headline">分类</h1>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-08T15:58:59+08:00">
-                2017-12-08
-              </time>
-            
 
-            
 
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/代码/" itemprop="url" rel="index">
-                    <span itemprop="name">代码</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
-            </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+</header>
 
       
       
-
       
-        <p>在Python中，-1可以表示最后一个元素，可是Numpy的reshape成-1的形状是什么意思？注意，这里</p>
-<a id="more"></a>
-<p><font color="red"> <b>并不是取最后一个维度！</b></font></p>
-<p><font color="red"> <b>并不是取最后一个维度！</b></font></p>
-<p><font color="red"> <b>并不是取最后一个维度！</b></font></p>
-<p>其实原因很简单，如果是最后一个维度，那得到的这个新数组的长度和之前的对不上。</p>
-<p>那 -1 代表什么？我们来看<a href="https://docs.scipy.org/doc/Numpy/reference/generated/Numpy.reshape.html#Numpy-reshape" target="_blank" rel="noopener">Numpy文档</a>的介绍：</p>
-<blockquote>
-<p><strong>newshape</strong> : int or tuple of ints</p>
-<p>The new shape should be compatible with the original shape. If an integer, then the result will be a 1-D array of that length. One shape dimension can be -1. In this case, the value is inferred from the length of the array and remaining dimensions.</p>
-</blockquote>
-<p>介绍得很清楚了，-1 在这里的作用是占一个位，表示这里有一个维度，那么具体是多少回由Numpy计算出来之后再填上去。</p>
-<p>来个例子帮助理解：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.array([ [[[<span class="number">3</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">2</span>]],[<span class="number">3</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">2</span>]],[[[<span class="number">3</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">2</span>]],[<span class="number">3</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">2</span>]],[[[<span class="number">3</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">2</span>]],[<span class="number">3</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">2</span>]] ])</span><br><span class="line">print(a.shape)</span><br><span class="line"><span class="comment"># (3, 3, 2)</span></span><br><span class="line">b = a.reshape(a.shape[<span class="number">0</span>],<span class="number">-1</span>)</span><br><span class="line">print(b.shape)</span><br><span class="line"><span class="comment"># (3, 6)</span></span><br></pre></td></tr></table></figure>
-
+      <div class="post-body">
+        
+        
+          <div class="category-all-page">
+            <div class="category-all-title">
+                目前共计 1 个分类
+            </div>
+            <div class="category-all">
+              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/代码/">代码</a><span class="category-list-count">4</span></li></ul>
+            </div>
+          </div>
+        
+      </div>
+      
+      
       
     </div>
     
     
     
-
-    
-
-    
-      <div>
-        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div></div>
-  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>打赏</span>
-  </button>
-  <div id="QR" style="display: none;">
-
-    
-      <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/weixin.png" alt="Ma Hao 微信支付"/>
-        <p>微信支付</p>
-      </div>
-    
-
-    
-      <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/alipay.jpg" alt="Ma Hao 支付宝"/>
-        <p>支付宝</p>
-      </div>
-    
-
-    
-
-  </div>
-</div>
-
-      </div>
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Numpy/" rel="tag"># Numpy</a>
-          
-            <a href="/tags/python/" rel="tag"># python</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/12/07/DeepLearning-Ng编程作业踩过的一些坑/" rel="next" title="DeepLearning-Ng编程作业踩过的一些坑">
-                <i class="fa fa-chevron-left"></i> DeepLearning-Ng编程作业踩过的一些坑
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/08/使用Numpy进行one-hot编码/" rel="prev" title="使用Numpy进行one-hot编码">
-                使用Numpy进行one-hot编码 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
