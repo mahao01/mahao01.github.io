@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[指数加权平均]]></title>
     <url>%2F2017%2F12%2F09%2F%E6%8C%87%E6%95%B0%E5%8A%A0%E6%9D%83%E5%B9%B3%E5%9D%87%2F</url>
-    <content type="text"><![CDATA[1. 计算方法 对一个序列 $ _1,_2,_3 ... _n $ ,引入参数 \(\beta\) ，使用如下方法可以计算得到一个新的序列 \(v\) : 对任意 $ t (1,n)$ $ v_t=v_{t-1}+(1-)_t $ 这个新的序列 $ v_1,v_2,v_3 ... v_n $ 的每个元素 \(v_t\) 可以近似看做是原序列第 \(t\) 个元素的前 \(\frac{1}{1-\beta}\) 个元素的平均值。那么，为什么能有这个近似？]]></content>
+    <content type="text"><![CDATA[1. 计算方法 对一个序列 $ _1,_2,_3 ... _n $ ,引入参数 \(\beta\) ，使用如下方法可以计算得到一个新的序列 \(v\) : \(\forall t \in (1,n)\) \(v_t = \beta v_{t-1}+(1-\beta)\theta_t\) 这个新的序列 $ v_1,v_2,v_3 ... v_n $ 的每个元素 \(v_t\) 可以近似看做是原序列截止到第 \(t\) 个元素为止，前 \(\frac{1}{1-\beta}\) 个元素的平均值。那么，为什么能有这个近似？]]></content>
       <categories>
         <category>算法</category>
       </categories>
@@ -57,8 +57,8 @@
       </categories>
       <tags>
         <tag>deep learning</tag>
-        <tag>tensorflow</tag>
         <tag>coursera</tag>
+        <tag>tensorflow</tag>
       </tags>
   </entry>
   <entry>

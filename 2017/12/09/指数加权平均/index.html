@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="1. 计算方法 对一个序列 $ _1,_2,_3 ... _n $ ,引入参数 \(\beta\) ，使用如下方法可以计算得到一个新的序列 \(v\) :  对任意 $ t (1,n)$ $ v_t=v_{t-1}+(1-)_t $  这个新的序列 $ v_1,v_2,v_3 ... v_n $ 的每个元素 \(v_t\) 可以近似看做是原序列第 \(t\) 个元素的前 \(\frac">
+<meta name="description" content="1. 计算方法 对一个序列 $ _1,_2,_3 ... _n $ ,引入参数 \(\beta\) ，使用如下方法可以计算得到一个新的序列 \(v\) :">
 <meta name="keywords" content="deep learning,optimization">
 <meta property="og:type" content="article">
 <meta property="og:title" content="指数加权平均">
 <meta property="og:url" content="http://yoursite.com/2017/12/09/指数加权平均/index.html">
 <meta property="og:site_name" content="Ma Hao">
-<meta property="og:description" content="1. 计算方法 对一个序列 $ _1,_2,_3 ... _n $ ,引入参数 \(\beta\) ，使用如下方法可以计算得到一个新的序列 \(v\) :  对任意 $ t (1,n)$ $ v_t=v_{t-1}+(1-)_t $  这个新的序列 $ v_1,v_2,v_3 ... v_n $ 的每个元素 \(v_t\) 可以近似看做是原序列第 \(t\) 个元素的前 \(\frac">
-<meta property="og:updated_time" content="2017-12-09T09:48:40.766Z">
+<meta property="og:description" content="1. 计算方法 对一个序列 $ _1,_2,_3 ... _n $ ,引入参数 \(\beta\) ，使用如下方法可以计算得到一个新的序列 \(v\) :">
+<meta property="og:updated_time" content="2017-12-09T11:07:54.522Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="指数加权平均">
-<meta name="twitter:description" content="1. 计算方法 对一个序列 $ _1,_2,_3 ... _n $ ,引入参数 \(\beta\) ，使用如下方法可以计算得到一个新的序列 \(v\) :  对任意 $ t (1,n)$ $ v_t=v_{t-1}+(1-)_t $  这个新的序列 $ v_1,v_2,v_3 ... v_n $ 的每个元素 \(v_t\) 可以近似看做是原序列第 \(t\) 个元素的前 \(\frac">
+<meta name="twitter:description" content="1. 计算方法 对一个序列 $ _1,_2,_3 ... _n $ ,引入参数 \(\beta\) ，使用如下方法可以计算得到一个新的序列 \(v\) :">
 
 
 
@@ -382,11 +382,12 @@
       
         <h3 id="计算方法">1. 计算方法</h3>
 <p>对一个序列 $ _1,_2,_3 ... _n $ ,引入参数 <span class="math inline">\(\beta\)</span> ，使用如下方法可以计算得到一个新的序列 <span class="math inline">\(v\)</span> :</p>
+<a id="more"></a>
 <blockquote>
-<p>对任意 $ t (1,n)$</p>
-<p>$ v_t=v_{t-1}+(1-)_t $</p>
+<p><span class="math inline">\(\forall t \in (1,n)\)</span></p>
+<p><span class="math inline">\(v_t = \beta v_{t-1}+(1-\beta)\theta_t\)</span></p>
 </blockquote>
-<p>这个新的序列 $ v_1,v_2,v_3 ... v_n $ 的每个元素 <span class="math inline">\(v_t\)</span> 可以近似看做是原序列第 <span class="math inline">\(t\)</span> 个元素的前 <span class="math inline">\(\frac{1}{1-\beta}\)</span> 个元素的平均值。那么，为什么能有这个近似？</p>
+<p>这个新的序列 $ v_1,v_2,v_3 ... v_n $ 的每个元素 <span class="math inline">\(v_t\)</span> 可以近似看做是原序列截止到第 <span class="math inline">\(t\)</span> 个元素为止，前 <span class="math inline">\(\frac{1}{1-\beta}\)</span> 个元素的平均值。那么，为什么能有这个近似？</p>
 
       
     </div>
