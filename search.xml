@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[指数加权平均]]></title>
     <url>%2F2017%2F12%2F09%2F%E6%8C%87%E6%95%B0%E5%8A%A0%E6%9D%83%E5%B9%B3%E5%9D%87%2F</url>
-    <content type="text"><![CDATA[1. 计算方法 对一个序列 $ _1,_2,_3 ... _n $ ,引入参数 \(\beta\) ，使用如下方法可以计算得到一个新的序列 \(v\) : \(\forall t \in (1,n)\) \(v_t = \beta v_{t-1}+(1-\beta)\theta_t\) 这个新的序列 $ v_1,v_2,v_3 ... v_n $ 的每个元素 \(v_t\) 可以近似看做是原序列截止到第 \(t\) 个元素为止，前 \(\frac{1}{1-\beta}\) 个元素的平均值。那么，为什么能有这个近似？]]></content>
+    <content type="text"><![CDATA[1. 计算方法 对一个序列 $ _1,_2,_3 ... _n $ ,引入参数 \(\beta\) ，使用如下方法可以计算得到一个新的序列 \(v\) : \(\forall t \in (1,n)\) \(v_t = \beta v_{t-1}+(1-\beta)\theta_t\) 这个新的序列 $ v_1,v_2,v_3 ... v_n $ 的每个元素 \(v_t\) 可以近似看做是原序列截止到第 \(t\) 个元素为止，前 \(\frac{1}{1-\beta}\) 个元素的加权平均。那么，为什么可以这样近似？ 2. 原理解释 将迭代式子展开，可以得到： \(v_t=(1-\beta) (\theta_t+\beta\theta_{t-1} +\beta^2\theta_{t-2}+\beta^3\theta_{t-3}+\beta^4\theta_{t-4}+\cdots)\) 因为 \(\beta\) 是小于1的数，所以随着指数的增大，越趋近于0，而一般认为当指数项衰减到 \(\frac{1}{e}\) 就可以忽略不计。所以，只需要证明 \[\beta^{\frac{1}{1-\beta}}=\frac{1}{e}\] 成立即可。 \[\beta^{\frac{1}{1-\beta}}=\frac{1}{e}\] \[\begin{eqnarray} &amp;\Leftrightarrow&amp; \frac{\ln\beta}{1-\beta}=-1 \\ &amp;\Leftrightarrow&amp; {\ln\beta}=\beta-1 \\ &amp;\Leftrightarrow&amp; \ln(\beta+1)=\beta \end{eqnarray}\] 即为 \(\ln(x+1)\) 在 \(x=0\) 处的一阶泰勒展开，所以原等式成立。 常用的值有： \(\beta=0.9\) 时，\(\beta^{10}=\frac{1}{e}\) \(\beta=0.98\) 时，\(\beta^{50}=\frac{1}{e}\) 3. 偏差修正 为了修正指数加权平均在前期的误差，将迭代公式修改为： \[v_t = \frac{(\beta v_{t-1}+(1-\beta)\theta_t)}{(1-\beta^t)}\] 当然，这种偏差只会在前期存在，如果不在意前期的这点误差，完全可以忽略。]]></content>
       <categories>
         <category>算法</category>
       </categories>
@@ -44,8 +44,8 @@
         <category>代码</category>
       </categories>
       <tags>
-        <tag>Numpy</tag>
         <tag>python</tag>
+        <tag>Numpy</tag>
       </tags>
   </entry>
   <entry>
@@ -70,8 +70,8 @@
       </categories>
       <tags>
         <tag>tensorflow</tag>
-        <tag>Numpy</tag>
         <tag>python</tag>
+        <tag>Numpy</tag>
       </tags>
   </entry>
 </search>

@@ -86,7 +86,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/12/09/指数加权平均/index.html">
 <meta property="og:site_name" content="Ma Hao">
 <meta property="og:description" content="1. 计算方法 对一个序列 $ _1,_2,_3 ... _n $ ,引入参数 \(\beta\) ，使用如下方法可以计算得到一个新的序列 \(v\) :">
-<meta property="og:updated_time" content="2017-12-09T11:07:54.522Z">
+<meta property="og:updated_time" content="2017-12-09T17:03:17.061Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="指数加权平均">
 <meta name="twitter:description" content="1. 计算方法 对一个序列 $ _1,_2,_3 ... _n $ ,引入参数 \(\beta\) ，使用如下方法可以计算得到一个新的序列 \(v\) :">
@@ -387,7 +387,23 @@
 <p><span class="math inline">\(\forall t \in (1,n)\)</span></p>
 <p><span class="math inline">\(v_t = \beta v_{t-1}+(1-\beta)\theta_t\)</span></p>
 </blockquote>
-<p>这个新的序列 $ v_1,v_2,v_3 ... v_n $ 的每个元素 <span class="math inline">\(v_t\)</span> 可以近似看做是原序列截止到第 <span class="math inline">\(t\)</span> 个元素为止，前 <span class="math inline">\(\frac{1}{1-\beta}\)</span> 个元素的平均值。那么，为什么能有这个近似？</p>
+<p>这个新的序列 $ v_1,v_2,v_3 ... v_n $ 的每个元素 <span class="math inline">\(v_t\)</span> 可以近似看做是原序列截止到第 <span class="math inline">\(t\)</span> 个元素为止，前 <span class="math inline">\(\frac{1}{1-\beta}\)</span> 个元素的加权平均。那么，为什么可以这样近似？</p>
+<h3 id="原理解释">2. 原理解释</h3>
+<p>将迭代式子展开，可以得到：</p>
+<blockquote>
+<p><span class="math inline">\(v_t=(1-\beta) (\theta_t+\beta\theta_{t-1} +\beta^2\theta_{t-2}+\beta^3\theta_{t-3}+\beta^4\theta_{t-4}+\cdots)\)</span></p>
+</blockquote>
+<p>因为 <span class="math inline">\(\beta\)</span> 是小于1的数，所以随着指数的增大，越趋近于0，而一般认为当指数项衰减到 <span class="math inline">\(\frac{1}{e}\)</span> 就可以忽略不计。所以，只需要证明 <span class="math display">\[\beta^{\frac{1}{1-\beta}}=\frac{1}{e}\]</span> 成立即可。 <span class="math display">\[\beta^{\frac{1}{1-\beta}}=\frac{1}{e}\]</span> <span class="math display">\[\begin{eqnarray}
+    &amp;\Leftrightarrow&amp; \frac{\ln\beta}{1-\beta}=-1 \\ 
+    &amp;\Leftrightarrow&amp; {\ln\beta}=\beta-1 \\
+    &amp;\Leftrightarrow&amp; \ln(\beta+1)=\beta
+\end{eqnarray}\]</span> 即为 <span class="math inline">\(\ln(x+1)\)</span> 在 <span class="math inline">\(x=0\)</span> 处的一阶泰勒展开，所以原等式成立。 常用的值有：</p>
+<blockquote>
+<p><span class="math inline">\(\beta=0.9\)</span> 时，<span class="math inline">\(\beta^{10}=\frac{1}{e}\)</span></p>
+<p><span class="math inline">\(\beta=0.98\)</span> 时，<span class="math inline">\(\beta^{50}=\frac{1}{e}\)</span></p>
+</blockquote>
+<h3 id="偏差修正">3. 偏差修正</h3>
+<p>为了修正指数加权平均在前期的误差，将迭代公式修改为： <span class="math display">\[v_t = \frac{(\beta v_{t-1}+(1-\beta)\theta_t)}{(1-\beta^t)}\]</span> 当然，这种偏差只会在前期存在，如果不在意前期的这点误差，完全可以忽略。</p>
 
       
     </div>
@@ -601,7 +617,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算方法"><span class="nav-text">1. &#x8BA1;&#x7B97;&#x65B9;&#x6CD5;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算方法"><span class="nav-text">1. &#x8BA1;&#x7B97;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理解释"><span class="nav-text">2. &#x539F;&#x7406;&#x89E3;&#x91CA;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#偏差修正"><span class="nav-text">3. &#x504F;&#x5DEE;&#x4FEE;&#x6B63;</span></a></li></ol></div>
             
 
           </div>
