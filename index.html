@@ -521,26 +521,16 @@
 
       
         
-          
-            <p>本文主要是在看完Andrew Ng的Deep Learning Specialization（<a href="https://www.coursera.org/specializations/deep-learning" target="_blank" rel="noopener">Coursera链接</a>，<a href="http://mooc.study.163.com/smartSpec/detail/1001319001.htm" target="_blank" rel="noopener">网易云课堂官方授权搬运</a>）系列中相关课程后的记录整理和一点思考</p>
+          <p>本文主要是在看完Andrew Ng的Deep Learning Specialization（<a href="https://www.coursera.org/specializations/deep-learning" target="_blank" rel="noopener">Coursera链接</a>，<a href="http://mooc.study.163.com/smartSpec/detail/1001319001.htm" target="_blank" rel="noopener">网易云课堂官方授权搬运</a>）系列中相关课程后的记录整理和一点思考</p>
 <h3 id="什么是batch-norm">1. 什么是Batch-Norm</h3>
-<p>首先，Batch-Norm（以下简称BN）是一种归一化的方法，不仅可以在深度学习中使用，在很多其他统计学习（比如Logistic Regression）中也适用。归一化的目标都是希望能加速学习过程，一个简单的例子就是：在使用梯度下降求解最优解的时候，如果等高线（或者说等值线？）的形状越近似于圆，算法收敛到最优解的速度越快，而BN就是将原本的椭圆处理成近似圆。</p>
-<h3 id="神经网络中batch-norm的实现">2. 神经网络中Batch-Norm的实现</h3>
-<p>BN实现过程如下：</p>
-<blockquote>
-<p><span class="math display">\[ \mu=\frac{1}{m}\sum_i{z^{(i)}} ​\]</span></p>
-<p><span class="math display">\[\sigma^2=\frac{1}{m}\sum_i(z^{(i)}-\mu)^2\]</span></p>
-<p><span class="math display">\[ z_{norm}^{(i)}=\frac{z^{(i)-\mu}}{\sqrt{(\sigma^2+\epsilon)}} \]</span></p>
-<p><span class="math display">\[ \tilde{z}^{(i)}=\gamma*z_{norm}^{(i)}+\beta \]</span></p>
-</blockquote>
-<p>其实就是简单的“减均值除方差”归一化，不过在“除方差”的时候加上了一个 <span class="math inline">\(\epsilon\)</span> ，是为了在方差近似等于0的时候能保持数值计算稳定。这样就得到的所有 <span class="math inline">\(z^{(i)}\)</span> 都是均值为0，方差为1的分布，但是我们并不希望每个隐藏单元的输入都是这样，因此有了最后一行的<span class="math inline">\(\gamma\)</span> 和 $ $ ，作用是可以设置 <span class="math inline">\(\tilde{z}\)</span> 的平均值。注意：这是两个需要在学习过程中不断学习调整的参数，可以用比如Adam之类的学习算法调节到其最优值。</p>
-<p>BN的使用对象是所有的 <span class="math inline">\(z\)</span> ，就是隐层神经元的输入，在使用激活函数之前对其进行归一化，发生在$ z a$ 的过程之前。本来需要用学习算法更新值的是 $ w,b $ ，而由于 $ b $ 只影响均值，但是最终 <span class="math inline">\(z\)</span> 的均值取决于 <span class="math inline">\(\gamma\)</span> 和 $ $ 这两个参数，所以 $ b $ 的作用会被 <span class="math inline">\(\gamma\)</span> 和 $ $ 消除掉。因此，选择不进行 $ b $ 参数的更新 ，或者说，也就不存在 $ b $ 参数了。</p>
-<h3 id="实际模型训练中使用batch-norm">3. 实际模型训练中使用Batch-Norm</h3>
-<p>对于大规模的数据，完全加载到内存中是不可能的，因此，和mini-batch gradient descent一样，也是将整个数据集分成很多个小规模的mini-batch。归一化的过程是针对每个mini-batch，对应公式中的均值和方差也是每个mini-batch的均值和方差。每个mini-batch可以看做是从数据集整体中进行抽样得到的，因此其均值和方差相对整个数据集来说会有一定的差异，这相当于对数据集加上了一些噪声，也就因此会有<strong>一点点</strong>（真的只有那么一点点）正则化的效果。需要注意的是：由于效果微乎其微，正则化只能作为BN的一点意外收获，并不能完全取代比如Dropout等“专业正则化”方法。</p>
-<h3 id="测试时候的batch-norm">4. 测试时候的Batch-Norm</h3>
-<p>因为在测试的时候，模型是针对每个单独的样本输入预测其对应的label，而这个时候计算单个样本的均值和方差显然是没有意义的，所以需要一个方法来估算mini-batch的均值和方差，就可以用指数加权平均（exponentiallly weighted average）。当然，在深度学习的框架（比如tensorflow）中会有默认的估算方式。</p>
-
-          
+<p>首先，Batch-Norm（以下简称BN）是一种归一化的方法，不仅可以在深度学习中使用，在很多其他统计学习（比如Logistic Regression）中也适用。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/09/Batch-Norm/#post.more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1282,7 +1272,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

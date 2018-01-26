@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="本文主要是在看完Andrew Ng的Deep Learning Specialization（Coursera链接，网易云课堂官方授权搬运）系列中相关课程后的记录整理和一点思考 1. 什么是Batch-Norm 首先，Batch-Norm（以下简称BN）是一种归一化的方法，不仅可以在深度学习中使用，在很多其他统计学习（比如Logistic Regression）中也适用。归一化的目标都是希望能">
+<meta name="description" content="本文主要是在看完Andrew Ng的Deep Learning Specialization（Coursera链接，网易云课堂官方授权搬运）系列中相关课程后的记录整理和一点思考 1. 什么是Batch-Norm 首先，Batch-Norm（以下简称BN）是一种归一化的方法，不仅可以在深度学习中使用，在很多其他统计学习（比如Logistic Regression）中也适用。">
 <meta name="keywords" content="deep learning,coursera">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Batch Norm">
 <meta property="og:url" content="http://yoursite.com/2017/12/09/Batch-Norm/index.html">
 <meta property="og:site_name" content="Ma Hao">
-<meta property="og:description" content="本文主要是在看完Andrew Ng的Deep Learning Specialization（Coursera链接，网易云课堂官方授权搬运）系列中相关课程后的记录整理和一点思考 1. 什么是Batch-Norm 首先，Batch-Norm（以下简称BN）是一种归一化的方法，不仅可以在深度学习中使用，在很多其他统计学习（比如Logistic Regression）中也适用。归一化的目标都是希望能">
-<meta property="og:updated_time" content="2017-12-09T09:01:37.226Z">
+<meta property="og:description" content="本文主要是在看完Andrew Ng的Deep Learning Specialization（Coursera链接，网易云课堂官方授权搬运）系列中相关课程后的记录整理和一点思考 1. 什么是Batch-Norm 首先，Batch-Norm（以下简称BN）是一种归一化的方法，不仅可以在深度学习中使用，在很多其他统计学习（比如Logistic Regression）中也适用。">
+<meta property="og:updated_time" content="2018-01-26T11:21:42.731Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Batch Norm">
-<meta name="twitter:description" content="本文主要是在看完Andrew Ng的Deep Learning Specialization（Coursera链接，网易云课堂官方授权搬运）系列中相关课程后的记录整理和一点思考 1. 什么是Batch-Norm 首先，Batch-Norm（以下简称BN）是一种归一化的方法，不仅可以在深度学习中使用，在很多其他统计学习（比如Logistic Regression）中也适用。归一化的目标都是希望能">
+<meta name="twitter:description" content="本文主要是在看完Andrew Ng的Deep Learning Specialization（Coursera链接，网易云课堂官方授权搬运）系列中相关课程后的记录整理和一点思考 1. 什么是Batch-Norm 首先，Batch-Norm（以下简称BN）是一种归一化的方法，不仅可以在深度学习中使用，在很多其他统计学习（比如Logistic Regression）中也适用。">
 
 
 
@@ -382,7 +382,7 @@
       
         <p>本文主要是在看完Andrew Ng的Deep Learning Specialization（<a href="https://www.coursera.org/specializations/deep-learning" target="_blank" rel="noopener">Coursera链接</a>，<a href="http://mooc.study.163.com/smartSpec/detail/1001319001.htm" target="_blank" rel="noopener">网易云课堂官方授权搬运</a>）系列中相关课程后的记录整理和一点思考</p>
 <h3 id="什么是batch-norm">1. 什么是Batch-Norm</h3>
-<p>首先，Batch-Norm（以下简称BN）是一种归一化的方法，不仅可以在深度学习中使用，在很多其他统计学习（比如Logistic Regression）中也适用。归一化的目标都是希望能加速学习过程，一个简单的例子就是：在使用梯度下降求解最优解的时候，如果等高线（或者说等值线？）的形状越近似于圆，算法收敛到最优解的速度越快，而BN就是将原本的椭圆处理成近似圆。</p>
+<p>首先，Batch-Norm（以下简称BN）是一种归一化的方法，不仅可以在深度学习中使用，在很多其他统计学习（比如Logistic Regression）中也适用。<a id="more"></a>归一化的目标都是希望能加速学习过程，一个简单的例子就是：在使用梯度下降求解最优解的时候，如果等高线（或者说等值线？）的形状越近似于圆，算法收敛到最优解的速度越快，而BN就是将原本的椭圆处理成近似圆。</p>
 <h3 id="神经网络中batch-norm的实现">2. 神经网络中Batch-Norm的实现</h3>
 <p>BN实现过程如下：</p>
 <blockquote>
@@ -634,7 +634,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
